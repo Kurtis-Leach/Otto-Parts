@@ -42,7 +42,7 @@ module.exports = {
                 firstname: req.body.firstname || user.firstname,
                 lastname: req.body.lastname || user.lastname,
                 username: req.body.username || user.username,
-                password_digest: req.body.password_digest || user.password_digest
+                password: req.body.password
             })
             .then(user => res.status(201).send(user))
             .catch(error => res.status(400).send(error))

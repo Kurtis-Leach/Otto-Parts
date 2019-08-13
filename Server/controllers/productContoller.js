@@ -30,7 +30,7 @@ module.exports = {
         .then((product)=>{
             if (!product){
                 return res.status(404).send({
-                    message: 'product not Found'
+                    message: 'Product not Found'
                 })
             }
 
