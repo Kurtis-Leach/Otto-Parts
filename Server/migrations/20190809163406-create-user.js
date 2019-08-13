@@ -24,6 +24,10 @@ module.exports = {
       password_digest:{
         type: Sequelize.STRING
       },
+      admin:{
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      },
       // password: {
       //     type: Sequelize.VIRTUAL,
       //     set: function(val){

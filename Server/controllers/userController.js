@@ -20,7 +20,8 @@ module.exports = {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             username: req.body.username,
-            password: req.body.password
+            password: req.body.password,
+            admin: req.body.admin || false
         })
         .then(user => res.status(201).send(user))
         .catch(error => res.status(400).send(error))
