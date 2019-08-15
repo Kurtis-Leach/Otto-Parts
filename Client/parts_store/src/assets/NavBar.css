@@ -2,13 +2,15 @@ body {
 font-size: 28px;
 }
 
+.mainDiv {
+    background-color: #333;
+    padding: 0;
+}
+
 .list {
 list-style-type: none;
 margin: 0;
-padding: 10px;
-overflow: hidden;
 background-color: #333;
-position: -webkit-sticky; /* Safari */
 position: sticky;
 top: 0;
 }
@@ -45,7 +47,17 @@ text-decoration: none;
     width: 70px;
 }
 
+.searchListItem {
+  margin: auto;
+  width: 25%;
+  padding: 10px;
+
+}
+
 .searchDiv {
-text-align: center;
-display: inline-block
+    padding: 20px;
+}
+
+.inputSearch {
+    width: 100%
 }
