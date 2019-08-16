@@ -31,6 +31,10 @@ module.exports = (sequelize, DataTypes) => {
         get: function(){
             return jwt.encode({ id: this.id}, 'jsdaknfioed0243895')
         }
+    },
+    admin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
 
   }, {});
