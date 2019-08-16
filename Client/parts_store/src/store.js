@@ -1,5 +1,4 @@
 import { createStore, compose, applyMiddleware } from 'redux'
-import history from './history'
 import ReduxThunk from 'redux-thunk'
 
 // history.push('/') move to new path

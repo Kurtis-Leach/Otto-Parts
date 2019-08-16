@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PartCard from './PartCard.js';
 import {connect} from 'react-redux'
-import {Segment, Grid} from 'semantic-ui-react'
+// import {Segment, Grid} from 'semantic-ui-react'
 import '../assets/Collection.css'
 
 const mapStateToProps = (state)=>{
@@ -29,7 +29,9 @@ class PartsCollection extends Component {
     style = {
         display: 'flex',
         flexWrap: 'wrap',
-        
+        //padding: '200px',
+        width: '1500px',
+        margin: 'auto'
     }
 
 
