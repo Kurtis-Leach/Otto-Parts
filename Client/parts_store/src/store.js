@@ -5,7 +5,10 @@ import ReduxThunk from 'redux-thunk'
 
 const initialState = {
     test: '',
-    parts: []
+    parts: [],
+    part: {},
+    cart: [],
+    loggedIn: false
 }
 
 const reducer = (state, action) => {
@@ -19,6 +22,21 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 parts: action.parts
+            }
+        case 'SET_CURR_PART':
+            return {
+                ...state,
+                part: action.part
+            }
+        case 'CURR_CART':
+            return {
+                ...state,
+                cart: action.cart
+            }
+        case 'USER_LOGGED_IN':
+            return {
+                ...state,
+                loggedIn: action.loggedIn
             }
         default:
         return state

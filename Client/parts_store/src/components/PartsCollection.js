@@ -3,7 +3,7 @@ import PartCard from './PartCard.js';
 import {connect} from 'react-redux'
 // import {Segment, Grid} from 'semantic-ui-react'
 import '../assets/Collection.css'
-
+ 
 const mapStateToProps = (state)=>{
     return ({
         parts: state.parts
@@ -29,18 +29,16 @@ class PartsCollection extends Component {
     style = {
         display: 'flex',
         flexWrap: 'wrap',
-        //padding: '200px',
         width: '1500px',
-        margin: 'auto'
+        margin: 'auto',
+        justifyContent: 'center'
     }
 
 
     render() {
         return (
         <div style={this.style}>
-            {/* <Grid > */}
-            {this.props.parts.map((part, key)=>(<PartCard key={key} part={part}/>))}
-            {/* </Grid> */}
+            {this.props.parts.map((part, key)=>( part.ordered ? null :<PartCard key={key} part={part}/>))}
         </div>
         );
     }

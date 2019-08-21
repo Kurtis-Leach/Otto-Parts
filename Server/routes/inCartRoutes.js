@@ -7,8 +7,10 @@ module.exports = (app) => {
     
     app.post('/inCarts', inCartController.create)
 
+    // app.post('/inCarts/parts', inCartController.find)
+
     app.delete('/inCarts/:id', inCartController.delete)
 
     app.delete('/inCarts/all/:id', inCartController.deleteAll)
-
+    
 }

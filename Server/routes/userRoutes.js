@@ -4,6 +4,8 @@ module.exports = (app) => {
     app.get('/users', userController.get)
 
     app.get('/users/:id', userController.getById)
+
+    app.get('/users/token/:token', userController.getByToken)
     
     app.post('/users', userController.create)
 

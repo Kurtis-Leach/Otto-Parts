@@ -39,6 +39,18 @@ module.exports = {
             }
         })     
     },
+    check(){
+        const id = req.params.id
+        Product.findOne({where:{id: id}})
+        .then((product)=>{
+            if (!product){
+                return res.status(404).send({message: 'Product not Found'})
+            }
+            else if (product.ordered){
+                return res.status(404).send({message: 'Product has already been ordered'})
+            }
+        })
+    },
     delete(req, res) {
         console.log('we hit the route B', req.body)
         const id = req.params.id

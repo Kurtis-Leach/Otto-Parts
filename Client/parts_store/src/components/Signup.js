@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar'
 import { Form, Button, Checkbox, Segment } from 'semantic-ui-react'
-import {connect} from 'react-redux'
 import history from '../history'
 
 export default class Signup extends Component {
