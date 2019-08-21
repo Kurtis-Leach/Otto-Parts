@@ -8,7 +8,9 @@ const initialState = {
     parts: [],
     part: {},
     cart: [],
-    loggedIn: false
+    loggedIn: false,
+    currentUserName: {},
+    orders: []
 }
 
 const reducer = (state, action) => {
@@ -36,8 +38,14 @@ const reducer = (state, action) => {
         case 'USER_LOGGED_IN':
             return {
                 ...state,
-                loggedIn: action.loggedIn
+                loggedIn: action.loggedIn,
+                currentUserName: action.name
             }
+        case 'ORDERS':
+            return {
+                ...state,
+                orders: action.orders
+            }    
         default:
         return state
     }

@@ -1,6 +1,5 @@
 const InCart = require('../models/index.js').InCart
 const Product = require('../models/index.js').Product
-const User = require('../models/index.js').User
 const Sequelize = require('sequelize')
 module.exports = {
     get(req, res) {
@@ -66,7 +65,7 @@ module.exports = {
         return InCart
             .findAll({ where: { userId: id } })
             .then((inCarts) => {
-                if (!inCarts) {
+                if (inCarts.length === 0) {
                     return res.status(404).send({
                         message: 'InCart not Found'
                     })
@@ -74,7 +73,7 @@ module.exports = {
                 for (let i in inCarts) {
                     inCarts[i].destroy()
                 }
-                inCart => res.status(204).send({ message: 'Success' })
+                res.status(204).send({ message: 'Success' })
             })
             .catch(error => res.status(400).send(error))
     }

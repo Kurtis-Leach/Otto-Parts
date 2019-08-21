@@ -6,9 +6,8 @@ import history from './history'
 import Login from './components/Login.js'
 import Signup from './components/Signup.js'
 import PartDetails from './components/PartDetails.js'
-import ProfilePage from './components/ProfilePage'
+import OrdersPage from './components/OrdersPage'
 import Cart from './components/Cart'
-import Checkout from './components/Checkout'
 
 function App() {
   return (
@@ -17,9 +16,9 @@ function App() {
       <Route exact path='/login' component={Login}/>
       <Route exact path='/signup' component={Signup}/>
       <Route exact path='/parts/:id' component={PartDetails}/>
-      <Route exact path='/myProfile' component={ProfilePage}/>
-      <Route exact path='/cart' component={Cart}/>
-      <Route exact path='/checkout' component={Checkout}/>
+      <Route exact path='/orders' component={OrdersPage}/>
+      <Route exact path='/cart' component={()=>(<Cart cartParam={true}/>)}/>
+      <Route exact path='/checkout' component={Cart}/>
     </Router>
   );
 }

@@ -53,6 +53,29 @@ module.exports = {
         })
         .catch(error => res.status(400).send(error))
     },
+    order(req, res) {
+        const id = req.params.id
+        return Product
+        .findOne({where:{id: id}})
+        .then((product)=>{
+            if (!product){
+                return res.status(404).send({
+                    message: 'Product not Found'
+                })
+            } else if (product.ordered){
+                return res.status(404).send({message: 'Product has already been ordered'})
+            } else {
+                return product
+                .update({
+                    orderId: req.body.orderId,
+                    ordered: true
+                })
+                .then(product => res.status(201).send(product))
+                .catch(error => res.status(400).send(error))
+            }
+        })
+        .catch(error => res.status(400).send(error))
+    },
     delete(req, res) {
         console.log('we hit the route B', req.body)
         const id = req.params.id

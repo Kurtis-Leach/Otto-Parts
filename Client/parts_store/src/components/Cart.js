@@ -43,14 +43,55 @@ class Cart extends Component {
         }).then(()=>{this.props.cartFetch()})
     }
 
+    orderMaker() {
+        let userId = this.props.cart[0].userId
+        fetch('http://localhost:8000/orders',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userId: userId
+            })
+        })
+        .then(res=>res.json())
+            .then((order)=>{
+                this.props.cart.forEach((inCart)=>{
+                    fetch(`http://localhost:8000/parts/order/${inCart.productId}`,{
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        orderId: order.id
+                    })
+                }) 
+                fetch(`http://localhost:8000/inCarts/all/${userId}`, {
+                    method:'DELETE',
+                    headers:{
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: 'nice'
+                    })
+                })
+                history.push('/orders')
+            })
+        })
+        
+    }
+
+
     render(){
+        let removeFunc = this.props.cartParam ? this.removeFromCart : false
         return(
                 <Segment>
                     <NavBar/>
                     <Segment className='cartDiv'>
-                        {this.props.cart.length > 0 ? this.props.cart.map((inCart, key)=>(<PartInCart removeFromCart={this.removeFromCart} inCart={inCart} key={key} part={inCart.Product}></PartInCart>)) : <Header>You currently have no items in your cart.</Header>}
+                        {this.props.cart.length > 0 ? this.props.cart.map((inCart, key)=>(<PartInCart removeFromCart={removeFunc} inCart={inCart} key={key} part={inCart.Product}></PartInCart>)) : <Header>You currently have no items in your cart.</Header>}
                     </Segment> 
-                    {this.props.cart.length > 0 ? 
+                    {this.props.cartParam ? 
+                    this.props.cart.length > 0 ? 
                         <Button onClick={()=>{history.push('/checkout')}} fluid size='large' animated='vertical'>
                             <Button.Content>
                                 Proceed to Checkout
@@ -61,7 +102,14 @@ class Cart extends Component {
                             <Button.Content>
                                 Add Items to Cart
                             </Button.Content> 
-                        </Button>}
+                        </Button>
+                        :
+                        <Button onClick={()=>{this.orderMaker()}} fluid size='large' animated='vertical'>
+                            <Button.Content>
+                                Place Order
+                            </Button.Content> 
+                        </Button>    
+                    }
                         
                 </Segment>
         ) 

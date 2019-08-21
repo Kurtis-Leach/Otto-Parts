@@ -7,7 +7,8 @@ import {connect} from 'react-redux'
 
 const mapStateToProps = (state)=>{
     return ({
-        loggedIn: state.loggedIn
+        loggedIn: state.loggedIn,
+        name: state.currentUserName
     })
 }
 
@@ -18,7 +19,7 @@ const mapDispatchToProps = {
             .then(res=>res.json())
             .then(user=>{ 
                 if(user){
-                    dispatch({type:'USER_LOGGED_IN', loggedIn: true})
+                    dispatch({type:'USER_LOGGED_IN', loggedIn: true, name:{firstname: user.firstname, lastname: user.lastname}})
                 } else{
                     dispatch({type:'USER_LOGGED_IN', loggedIn: false})
                 }
@@ -64,11 +65,17 @@ class NavBar extends Component {
                         <List.Item className='signupListItem'>
                             { this.props.loggedIn ?
                             <Segment basic className='signupSegment'>
-                                <Button onClick={()=>{this.logout()}}>Sign Out</Button>
+                                <Dropdown closeOnBlur button text='Profile'>
+                                    <Dropdown.Menu icon='arrow'>
+                                        <Dropdown.Item disabled text={<span>Signed in as <strong>{this.props.name.firstname + ' ' + this.props.name.lastname}</strong></span>} />
+                                        <Dropdown.Item onClick={()=>{history.push('/orders')}} text='Orders' />
+                                        <Dropdown.Item onClick={()=>{this.logout()}} text='Sign Out'/>
+                                    </Dropdown.Menu>
+                                </Dropdown>
                             </Segment> 
                             :
                             <Segment basic className='signupSegment'>
-                                <Dropdown button text='Login/Sign Up'>
+                                <Dropdown closeOnBlur button text='Login/Sign Up'>
                                     <Dropdown.Menu>
                                         <Dropdown.Item onClick={()=>{history.push('/login')}} text='Login' />
                                         <Dropdown.Item onClick={()=>{history.push('/signup')}} text='Sign Up'/>

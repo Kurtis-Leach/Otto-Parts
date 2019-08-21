@@ -1,5 +1,6 @@
 const Order = require('../models/index.js').Order
 const Product = require('../models/index.js').Product
+const Sequelize = require('sequelize')
 module.exports = {
     get(req, res) {
         const id = req.params.id
@@ -13,33 +14,46 @@ module.exports = {
         .then((order) => res.status(201).send(order))
         .catch(error => res.status(400).send(error))
     },
+    getAll(req, res) {
+        const userId = req.params.userId
+        Order.findAll({
+            where:{userId: userId},
+            include: [{
+                model: Product,
+                as: 'products',
+                where: { orderId: Sequelize.col('Order.id') }
+            }]
+        })
+        .then((orders) => res.status(201).send(orders))
+        .catch(error => res.status(400).send(error))
+    },
     create(req, res) {
         console.log('we hit the route B', req.body)
-        Product.findOne({where:{id: req.body.productId}})
-        .then((product)=>{
-            if (!product){
-                return res.status(404).send({message: 'Product not Found'})
-            }
-            else if (product.ordered){
-                return res.status(404).send({message: 'Product has already been ordered'})
-            }
-            else{
+        // Product.findOne({where:{id: req.body.productId}})
+        // .then((product)=>{
+            // if (!product){
+            //     return res.status(404).send({message: 'Product not Found'})
+            // }
+            // else if (product.ordered){
+            //     return res.status(404).send({message: 'Product has already been ordered'})
+            // }
+            // else{
                 return Order
                 .create
                     ({
                         userId: req.body.userId
                     })
                 .then(order => {
-                    product.update({
-                        orderId: order.id,
-                        ordered: true
-                    })
+                    // product.update({
+                    //     orderId: order.id,
+                    //     ordered: true
+                    // })
                     return res.status(201).send(order)})
                 .catch(error => res.status(400).send(error))
-            }
-        })     
+            // }
+        // })     
     },
-    check(){
+    check(req, res){
         const id = req.params.id
         Product.findOne({where:{id: id}})
         .then((product)=>{
@@ -50,6 +64,9 @@ module.exports = {
                 return res.status(404).send({message: 'Product has already been ordered'})
             }
         })
+        .catch(((product)=>{
+                return res.status(404).send({message: 'Product not Found'})
+        }))
     },
     delete(req, res) {
         console.log('we hit the route B', req.body)

@@ -1,13 +1,14 @@
 .cartDiv {
     width: 78%;
-    display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly
 }
 
 .partImage {
     /* width: 300px; */
     float: left;
     padding: 10px;
+    margin: auto;
 }
 
 .partInfo {
@@ -16,4 +17,10 @@
     float: right;
     width: 1450px;
     height: 300px;
+    margin: auto;
 }
+
+.price {
+    margin: auto;
+}
+
