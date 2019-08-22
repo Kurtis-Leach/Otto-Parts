@@ -25,7 +25,13 @@ const mapDispatchToProps = {
 }
 
 class OrdersPage extends Component {
-
+  style = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    width: '1500px',
+    margin: 'auto',
+    justifyContent: 'center'
+}
   componentDidMount(){
     this.props.ordersFetch()
   }
@@ -33,7 +39,7 @@ class OrdersPage extends Component {
     return (
       <Segment >
           <NavBar/>
-          <Segment>
+          <Segment style={this.style}>
               {this.props.orders.map((order)=>(<Order order={order}/>))}
           </Segment>
       </Segment>

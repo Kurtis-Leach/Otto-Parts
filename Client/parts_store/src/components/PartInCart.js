@@ -5,11 +5,16 @@ import React, { Component } from 'react';
 
 class PartInCart extends Component {
   style={
-        height: '300px',
+        height: '400px',
         margin: '5px',
         padding: '20px',
         display: 'flex',
         flexWrap: 'wrap',
+  }
+
+  removeButtonStyle={
+    float: 'right',
+    
   }
 
   
@@ -18,15 +23,18 @@ class PartInCart extends Component {
     let infoClass = this.props.removeFromCart ? 'partInfo' : null
     let pictureClass = this.props.removeFromCart ? 'partImage' : null
     let pictureSize = this.props.removeFromCart ? 'small' : 'medium'
+    let { id, type, color, make, model, year} = this.props.part
     return (
       <Segment style={this.style}  > 
-        <Segment basic onClick={()=>{history.push(`/parts/${this.props.part.id}`)}} compact className={pictureClass}>
+        <Segment basic onClick={()=>{history.push(`/parts/${id}`)}} compact className={pictureClass}>
             <Image src='https://imgplaceholder.com/420x320/ff7f7f/333333/fa-image' size={pictureSize} />
         </Segment>
         <Segment basic className={infoClass}>
-            <Header onClick={()=>{history.push(`/parts/${this.props.part.id}`)}} as='h3'> {this.props.part.year + ' ' + this.props.part.make + ' ' + this.props.part.model} </Header>
-            <Header as='h4'> {this.props.part.color + ' ' + this.props.part.type} </Header>
-            {this.props.removeFromCart ? <Button style={{float: 'right'}} onClick={()=>{this.props.removeFromCart(this.props.inCart.id)}} size='huge' animated='vertical'>
+            <Header onClick={()=>{history.push(`/parts/${id}`)}} as='h3'> {year + ' ' + make + ' ' + model} </Header>
+            <Header as='h4'> {color + ' ' + type} </Header>
+            <Header as='h4'> {'Price:  $' + this.props.part.price} </Header>
+            {this.props.removeFromCart ? 
+            <Button style={this.removeButtonStyle} onClick={()=>{this.props.removeFromCart(this.props.inCart.id)}} size='huge' animated='vertical'>
                 <Button.Content hidden>
                     Remove
                 </Button.Content>
@@ -41,9 +49,6 @@ class PartInCart extends Component {
             null}
             
         </Segment>
-            <Segment basic className='price'>
-              <Header as='h4'> {'Price:  $' + this.props.part.price} </Header>
-            </Segment>
       </Segment>
     );
   }

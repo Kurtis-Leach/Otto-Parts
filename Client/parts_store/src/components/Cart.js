@@ -81,13 +81,21 @@ class Cart extends Component {
         
     }
 
+    style={
+    display: 'flex',
+    flexWrap: 'wrap',
+    width: '1000px',
+    margin: 'auto',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    }
 
     render(){
         let removeFunc = this.props.cartParam ? this.removeFromCart : false
         return(
                 <Segment>
                     <NavBar/>
-                    <Segment className='cartDiv'>
+                    <Segment style={this.style}className='cartDiv'>
                         {this.props.cart.length > 0 ? this.props.cart.map((inCart, key)=>(<PartInCart removeFromCart={removeFunc} inCart={inCart} key={key} part={inCart.Product}></PartInCart>)) : <Header>You currently have no items in your cart.</Header>}
                     </Segment> 
                     {this.props.cartParam ? 

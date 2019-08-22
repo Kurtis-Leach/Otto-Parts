@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, Segment, Input, Image, Dropdown, Button, Sticky, Icon} from 'semantic-ui-react'
+import { List, Segment, Input, Image, Dropdown, Button, Sticky, Icon, Select} from 'semantic-ui-react'
 import '../assets/NavBar.css'
 import logo from '../assets/parts_pricing_icon.png'
 import history from '../history'
@@ -8,7 +8,8 @@ import {connect} from 'react-redux'
 const mapStateToProps = (state)=>{
     return ({
         loggedIn: state.loggedIn,
-        name: state.currentUserName
+        name: state.currentUserName,
+        searchTerm: state.searchTerm
     })
 }
 
@@ -27,7 +28,14 @@ const mapDispatchToProps = {
         } else {
             dispatch({type:'USER_LOGGED_IN', loggedIn: false})
         }
-    }
+    },
+    searchTermChange: (value) =>(
+        {type:'CHANGE_SEARCH_TERM', searchTerm: value}
+    ),
+    searchType: (value) =>(
+        // {type:'CHANGE_SEARCH_TYPE', searchType: value}
+        console.log(value)
+    )
 }
 
 class NavBar extends Component {
@@ -42,7 +50,14 @@ class NavBar extends Component {
     }
 
     render() {
-
+        const options = [
+            { key: 'all', text: 'All', value: 'all' },
+            { key: 'type', text: 'Type', value: 'type' },
+            { key: 'color', text: 'Color', value: 'color' },
+            { key: 'make', text: 'Make', value: 'make' },
+            { key: 'model', text: 'Model', value: 'model' },
+            { key: 'year', text: 'Year', value: 'year' },
+          ]
         return(
             <Sticky>
                 <Segment basic className='mainDiv' >
@@ -59,7 +74,7 @@ class NavBar extends Component {
                         </List.Item>
                         <List.Item className='searchListItem'>
                             <Segment  basic className='searchDiv'>
-                                <Input className='inputSearch' action='Search' placholder='Search...'/>
+                                <Input onChange={(e)=>{this.props.searchTermChange(e.target.value)}} value={this.props.searchTerm}className='inputSearch' placholder='Search...' action={<Button onClick={()=>{history.push('/')}}><Icon name='search' /></Button>} actionPosition='left'/>
                             </Segment>
                         </List.Item>
                         <List.Item className='signupListItem'>
@@ -67,7 +82,7 @@ class NavBar extends Component {
                             <Segment basic className='signupSegment'>
                                 <Dropdown closeOnBlur button text='Profile'>
                                     <Dropdown.Menu icon='arrow'>
-                                        <Dropdown.Item disabled text={<span>Signed in as <strong>{this.props.name.firstname + ' ' + this.props.name.lastname}</strong></span>} />
+                                        <Dropdown.Item  text={<span>Signed in as <strong>{this.props.name.firstname + ' ' + this.props.name.lastname}</strong></span>} />
                                         <Dropdown.Item onClick={()=>{history.push('/orders')}} text='Orders' />
                                         <Dropdown.Item onClick={()=>{this.logout()}} text='Sign Out'/>
                                     </Dropdown.Menu>

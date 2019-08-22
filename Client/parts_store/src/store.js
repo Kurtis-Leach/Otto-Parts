@@ -10,7 +10,9 @@ const initialState = {
     cart: [],
     loggedIn: false,
     currentUserName: {},
-    orders: []
+    orders: [],
+    searchTerm: '',
+    searchType: 'all'
 }
 
 const reducer = (state, action) => {
@@ -46,6 +48,16 @@ const reducer = (state, action) => {
                 ...state,
                 orders: action.orders
             }    
+        case 'CHANGE_SEARCH_TERM':
+            return {
+                ...state,
+                searchTerm: action.searchTerm
+            }  
+        case 'CHANGE_SEARCH_TYPE':
+            return {
+                ...state,
+                searchType: action.searchType
+            }  
         default:
         return state
     }
