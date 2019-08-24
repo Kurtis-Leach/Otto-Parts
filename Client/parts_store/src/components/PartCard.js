@@ -35,7 +35,7 @@ export default class PartCard extends Component {
 
   // onClick={()=>{history.push(`/parts/${this.props.part.id}`)}}
   render() {
-    let { id, type, color, make, model, year, price, img, description} = this.props.part
+    let { id, type, color, make, model, year} = this.props.part
     if (color === 'None'){
       color = ''
     }

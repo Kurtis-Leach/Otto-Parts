@@ -51,9 +51,9 @@ class PartsCollection extends Component {
             part.attr.forEach((attr)=>{
                 searchTerms.forEach((term)=>{
                     if(term === ''){
-                        searchTerms = searchTerms.filter( searchTerm => searchTerm != term)
+                        searchTerms = searchTerms.filter( searchTerm => searchTerm !== term)
                     } else if (attr.includes(term) === true){
-                        searchTerms = searchTerms.filter( searchTerm => searchTerm != term)
+                        searchTerms = searchTerms.filter( searchTerm => searchTerm !== term)
                     }
                 })
             })

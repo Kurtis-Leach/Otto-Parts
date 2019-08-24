@@ -6,25 +6,26 @@ export default class OrderedItem extends Component {
     style={
         borderStyle: 'solid',
         borderWidth: '5px',
-        width: '80%',
-        height: '40%'
+        padding: '5%',
+        width: '90%',
+        height: '97%'
     }
 
-    infoStyle={
-        left: '80%',
-    }
+    // infoStyle={
+    //     left: '80%',
+    // }
 
     imgStyle={
-        width: '400px',
+        width: '300px',
         height: '300px',
         marginRight: '0px'
     }
 
   render() {
       console.log (this.props.part)
-      let { type, color, make, model, year, price, img, description} = this.props.part
+      let { type, color, make, model, year, price} = this.props.part
     return (
-      <Segment style={this.style} >
+      <Segment basic style={this.style} >
           <Segment basic style={this.imgStyle}>
             <Image src='https://imgplaceholder.com/420x320/ff7f7f/333333/fa-image' size='large' />
           </Segment>

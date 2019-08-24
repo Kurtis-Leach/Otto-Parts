@@ -52,7 +52,7 @@ class PartCard extends Component {
     }
 
   render() {
-    let { type, color, make, model, year, price, img, description} = this.props.part
+    let { type, color, make, model, year, price, description} = this.props.part
     if (color === 'None'){
       color = ''
     }

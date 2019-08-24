@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Header } from 'semantic-ui-react'
+import { Segment} from 'semantic-ui-react'
 import NavBar from './NavBar'
 import {connect} from 'react-redux'
 import Order from './Order';
@@ -39,7 +39,7 @@ class OrdersPage extends Component {
     return (
       <Segment >
           <NavBar/>
-          <Segment style={this.style}>
+          <Segment basic style={this.style}>
               {this.props.orders.map((order)=>(<Order order={order}/>))}
           </Segment>
       </Segment>
