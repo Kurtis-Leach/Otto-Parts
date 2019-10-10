@@ -5,7 +5,15 @@ import ReduxThunk from 'redux-thunk'
 
 const initialState = {
     test: '',
-    parts: []
+    parts: [],
+    part: {},
+    cart: [],
+    loggedIn: false,
+    currentUserName: {},
+    orders: [],
+    searchTerm: '',
+    searchType: 'all',
+    admin: false
 }
 
 const reducer = (state, action) => {
@@ -20,6 +28,38 @@ const reducer = (state, action) => {
                 ...state,
                 parts: action.parts
             }
+        case 'SET_CURR_PART':
+            return {
+                ...state,
+                part: action.part
+            }
+        case 'CURR_CART':
+            return {
+                ...state,
+                cart: action.cart
+            }
+        case 'USER_LOGGED_IN':
+            return {
+                ...state,
+                loggedIn: action.loggedIn,
+                currentUserName: action.name,
+                admin: action.admin
+            }
+        case 'ORDERS':
+            return {
+                ...state,
+                orders: action.orders
+            }    
+        case 'CHANGE_SEARCH_TERM':
+            return {
+                ...state,
+                searchTerm: action.searchTerm
+            }  
+        case 'CHANGE_SEARCH_TYPE':
+            return {
+                ...state,
+                searchType: action.searchType
+            }  
         default:
         return state
     }

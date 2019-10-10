@@ -12,12 +12,17 @@ font-size: 28px;
 list-style-type: none;
 margin: 0;
 background-color: #333;
-position: sticky;
+/* position: sticky; */
 top: 0;
 }
 
 .listItem {
 float: left;
+}
+
+.listItemCart {
+float: right;
+
 }
 
 .nav-a {

@@ -9,6 +9,8 @@ module.exports = (app) => {
 
     app.put('/parts/:id', productController.update)
 
+    app.put('/parts/order/:id', productController.order)
+
     app.delete('/parts/:id', productController.delete)
 
 }

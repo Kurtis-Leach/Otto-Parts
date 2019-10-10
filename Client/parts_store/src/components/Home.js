@@ -19,9 +19,7 @@ function Home (props) {
     return (
         <div>
             <NavBar/>
-            <h1>Home</h1>
             <PartsCollection/>
-            <button onClick={props.handleClick}>Sup</button>
         </div>
 
     )
