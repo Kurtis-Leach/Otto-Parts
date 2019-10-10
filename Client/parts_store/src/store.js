@@ -12,7 +12,8 @@ const initialState = {
     currentUserName: {},
     orders: [],
     searchTerm: '',
-    searchType: 'all'
+    searchType: 'all',
+    admin: false
 }
 
 const reducer = (state, action) => {
@@ -41,7 +42,8 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 loggedIn: action.loggedIn,
-                currentUserName: action.name
+                currentUserName: action.name,
+                admin: action.admin
             }
         case 'ORDERS':
             return {

@@ -28,7 +28,7 @@ class PartCard extends Component {
     }
 
     addToCart = () => {
-      console.log('ADDING TO CART')
+      
       fetch(`http://localhost:8000/users/token/${localStorage.getItem('auth_token')}`)
       .then((res)=>res.json())
       .then((user)=>{
@@ -46,6 +46,8 @@ class PartCard extends Component {
         .then((res)=>{
           if (res.message === 'NOPE'){
             alert('Sorry already in cart')
+          }else {
+            alert('Added to Cart')
           }
         })
       })
