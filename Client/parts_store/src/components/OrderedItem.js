@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Segment, Header, Image } from 'semantic-ui-react'
+import Order from './Order';
 
-export default class OrderedItem extends Component {
+const OrderedItem = (props) => {
 
-    style={
+    const style={
         borderStyle: 'solid',
         borderWidth: '5px',
         padding: '5%',
@@ -11,30 +12,26 @@ export default class OrderedItem extends Component {
         height: '97%'
     }
 
-    // infoStyle={
-    //     left: '80%',
-    // }
-
-    imgStyle={
+    const imgStyle={
         width: '300px',
         height: '300px',
         marginRight: '0px'
     }
 
-  render() {
-      console.log (this.props.part)
-      let { type, color, make, model, year, price} = this.props.part
+    const { type, color, make, model, year, price} = props.part
+
     return (
-      <Segment basic style={this.style} >
-          <Segment basic style={this.imgStyle}>
+      <Segment basic style={style} >
+          <Segment basic style={imgStyle}>
             <Image src='https://imgplaceholder.com/420x320/ff7f7f/333333/fa-image' size='large' />
           </Segment>
-          <Segment basic style={this.infoStyle}>
+          <Segment basic >
             <Header as='h3'> {year + ' ' + make + ' ' + model} </Header>
             <Header as='h4'> {color + ' ' + type} </Header>
             <Header as='h4'> {'$' + price} </Header>
           </Segment>
       </Segment>
     );
-  }
 }
+
+export default OrderedItem

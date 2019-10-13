@@ -3,9 +3,9 @@ import NavBar from './NavBar'
 import { Form, Button, Checkbox, Segment } from 'semantic-ui-react'
 import history from '../history'
 
-export default class Signup extends Component {
+const Signup = (props) => {
 
-    postNewUser = (e) => {
+    const postNewUser = (e) => {
         fetch('http://localhost:8000/users',{
             method: 'POST',
             headers: {
@@ -23,11 +23,10 @@ export default class Signup extends Component {
             .catch((error)=>(error))
     }
 
-    render() {
         return (
             <Segment basic> 
                 <NavBar/>
-                <Form onSubmit={(e)=>{this.postNewUser(e)}}>
+                <Form onSubmit={(e)=>{postNewUser(e)}}>
                         <Form.Field >
                             <label>First Name</label>
                             <input id='firstname' placeholder='First Name' />
@@ -51,6 +50,6 @@ export default class Signup extends Component {
                     </Form>
             </Segment>
     );
-  }
 }
 
+export default Signup

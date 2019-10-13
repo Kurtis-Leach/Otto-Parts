@@ -15,6 +15,19 @@ module.exports = {
         .catch(error => res.status(400).send(error))
     },
     getAll(req, res) {
+        console.log('we hit the route B')
+        Order.findAll({
+            where:{},
+            include: [{
+                model: Product,
+                as: 'products',
+                where: { orderId: Sequelize.col('Order.id') }
+            }]
+        })
+        .then((orders) => res.status(201).send(orders))
+        .catch(error => res.status(400).send(error))
+    },
+    getAllProductsForUser(req, res) {
         const userId = req.params.userId
         Order.findAll({
             where:{userId: userId},
