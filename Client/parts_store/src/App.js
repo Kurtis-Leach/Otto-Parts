@@ -8,6 +8,7 @@ import Signup from './components/Signup.js'
 import PartDetails from './components/PartDetails.js'
 import OrdersPage from './components/OrdersPage'
 import Cart from './components/Cart'
+import addProducts from './components/addProducts'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route exact path='/orders' component={OrdersPage}/>
       <Route exact path='/cart' component={()=>(<Cart cartParam={true}/>)}/>
       <Route exact path='/checkout' component={Cart}/>
+      <Route exact path='/addProducts' component={addProducts}/>
     </Router>
   );
 }
