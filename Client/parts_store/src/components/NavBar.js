@@ -81,7 +81,7 @@ class NavBar extends Component {
                                     {admin ?
                                         <Dropdown.Menu icon='arrow'>
                                             <Dropdown.Item disabled='true' text={<span>Signed in as <strong>{"Admin: " + this.props.name.firstname + ' ' + this.props.name.lastname}</strong></span>} />
-                                            <Dropdown.Item onClick={() => { history.push('/orders') }} text='Orders' />{//Admin can see all orders that need to be filled and all past orders
+                                            <Dropdown.Item onClick={() => { history.push('/allorders') }} text='Orders' />{//Admin can see all orders that need to be filled and all past orders
                                             }
                                             <Dropdown.Item onClick={() => { history.push('/addproducts') }} text='Add Products' />
                                             <Dropdown.Item onClick={() => { history.push('/products') }} text='Products' />

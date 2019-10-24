@@ -13,7 +13,7 @@ export default class Order extends Component {
   }
 
   render() {
-
+    // products = this.props.order.products
     return (
       <Segment basic style={this.style} padded='very'>
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar'
 import { Form, Button, Segment } from 'semantic-ui-react'
-import history from '../history'
+
 
 const AddProducts = (props) => {
   const createProduct = (e) => {
