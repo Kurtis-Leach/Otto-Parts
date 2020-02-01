@@ -23,10 +23,6 @@ models.sequelize.sync().then(()=>   {
 
 require('./routes')(app)
 
-app.get('*', (req, res) => res.status(200).send({
-    message: 'Welcome to the beginning of nothingness.',
-    }))
-
 const port = 8000;
 
 app.set('port', port);

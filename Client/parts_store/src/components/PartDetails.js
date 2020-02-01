@@ -54,7 +54,7 @@ class PartCard extends Component {
     }
 
   render() {
-    let { type, color, make, model, year, price, description} = this.props.part
+    let { type, color, make, model, year, price, description, img} = this.props.part
     if (color === 'None'){
       color = ''
     }
@@ -66,7 +66,7 @@ class PartCard extends Component {
           <Header as='h4'> {color + ' ' + type} </Header>
           <Header as='h4'> {'$' + price} </Header>
           <Header as='h4'> {description} </Header>
-          <Image src='https://imgplaceholder.com/420x320/ff7f7f/333333/fa-image' size='large' />
+          <Image src={img} alt='https://imgplaceholder.com/420x320/ff7f7f/333333/fa-image' size='large' />
           <Button onClick={this.addToCart} fluid size='tiny' animated='vertical'>
               <Button.Content hidden>
                 Add To Cart
