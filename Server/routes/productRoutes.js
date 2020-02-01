@@ -1,14 +1,16 @@
 const productController = require('../controllers').product
 module.exports = (app) => {
 
-    app.get('/products', productController.get)
+    app.get('/parts', productController.get)
 
-    app.get('/products/:id', productController.getById)
+    app.get('/parts/:id', productController.getById)
     
-    app.post('/products', productController.create)
+    app.post('/parts', productController.create)
 
-    app.put('/products/:id', productController.update)
+    app.put('/parts/:id', productController.update)
 
-    app.delete('/products/:id', productController.delete)
+    app.put('/parts/order/:id', productController.order)
+
+    app.delete('/parts/:id', productController.delete)
 
 }

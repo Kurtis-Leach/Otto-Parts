@@ -1,0 +1,29 @@
+.cartDiv {
+    width: 78%;
+    flex-wrap: wrap;
+    justify-content: space-evenly
+}
+
+.partImage {
+    /* width: 300px; */
+    float: left;
+    padding: 10px;
+    margin: auto;
+}
+
+.partInfo {
+    /* margin-left: 200px;
+    padding-left: 100px; */
+    float: right;
+    width: 1450px;
+    height: 300px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.price {
+    margin: auto;
+}
+
