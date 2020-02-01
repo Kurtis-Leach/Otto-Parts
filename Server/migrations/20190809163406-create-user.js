@@ -24,29 +24,10 @@ module.exports = {
       password_digest:{
         type: Sequelize.STRING
       },
-      // password: {
-      //     type: Sequelize.VIRTUAL,
-      //     set: function(val){
-      //         const salt = bcrypt.genSaltSync(10);
-      //         const hash = bcrypt.hashSync(val, salt);
-      //         this.setDataValue('password_digest', hash)
-      //     }
-      // },
-      // auth_token: {
-      //     type: Sequelize.VIRTUAL,
-      //     get: function(){
-      //         return jwt.encode({ id: this.id}, 'jsdaknfioed0243895')
-      //     }
-      // },
-      // cartId: {
-      //   type: Sequelize.INTEGER,
-      //   onDelete: 'CASCADE',
-      //   references: {
-      //     model: 'Carts',
-      //     key: 'id',
-      //     as: 'cartId'
-      //   }
-      // },
+      admin:{
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

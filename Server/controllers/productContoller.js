@@ -17,7 +17,15 @@ module.exports = {
         return Product
         .create
         ({
-            title: req.body.title
+            title: req.body.title,
+            type: req.body.type,
+            color: req.body.color,
+            make: req.body.make,
+            model: req.body.model,
+            year: req.body.year,
+            price: req.body.price,
+            img: req.body.img,
+            description: req.body.description
         })
         .then(product => res.status(201).send(product))
         .catch(error => res.status(400).send(error))
@@ -42,6 +50,29 @@ module.exports = {
             })
             .then(product => res.status(201).send(product))
             .catch(error => res.status(400).send(error))
+        })
+        .catch(error => res.status(400).send(error))
+    },
+    order(req, res) {
+        const id = req.params.id
+        return Product
+        .findOne({where:{id: id}})
+        .then((product)=>{
+            if (!product){
+                return res.status(404).send({
+                    message: 'Product not Found'
+                })
+            } else if (product.ordered){
+                return res.status(404).send({message: 'Product has already been ordered'})
+            } else {
+                return product
+                .update({
+                    orderId: req.body.orderId,
+                    ordered: true
+                })
+                .then(product => res.status(201).send(product))
+                .catch(error => res.status(400).send(error))
+            }
         })
         .catch(error => res.status(400).send(error))
     },

@@ -1,4 +1,6 @@
 const User = require('../models/index.js').User
+const bcrypt = require('bcrypt')
+const jwt = require('jwt-simple')
 module.exports = {
     get(req, res) {
         const id = req.params.id
@@ -8,7 +10,14 @@ module.exports = {
     },
     getById(req, res) {
         const id = req.params.id
-        User.findAll({where:{id: id}})
+        User.findOne({where:{id: id}})
+        .then((user) => res.status(201).send(user))
+        .catch(error => res.status(400).send(error))
+    },
+    getByToken(req, res) {
+        const token = req.params.token
+        let {id} = jwt.decode(token, 'jsdaknfioed0243895')
+        User.findByPk(id)
         .then((user) => res.status(201).send(user))
         .catch(error => res.status(400).send(error))
     },
@@ -20,7 +29,8 @@ module.exports = {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             username: req.body.username,
-            password: req.body.password
+            password: req.body.password,
+            admin: req.body.admin || false
         })
         .then(user => res.status(201).send(user))
         .catch(error => res.status(400).send(error))
@@ -67,5 +77,16 @@ module.exports = {
             .catch(error => res.status(400).send(error))
         })
         .catch(error => res.status(400).send(error))
+    },
+    login (req, res){
+    const {username, password} = req.body
+    User.findOne({where: {username: username}})
+        .then((user)=>{
+            if(user && bcrypt.compareSync(password, user.password_digest)){
+                res.send(user)
+            } else {
+                res.send({message:'Nope!'})
+            }
+        })
     }
 }
