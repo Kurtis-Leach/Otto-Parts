@@ -6,9 +6,8 @@ const bcrypt = require('bcrypt')
 const jwt = require('jwt-simple')
 const logger = require('morgan')
 
-
 const app = express()
-app.use(cors({ origin: 'http://localhost:3000', credentials: true}))
+
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))

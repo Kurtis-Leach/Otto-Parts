@@ -1,46 +1,48 @@
-const Product = require('../models/index.js').Product
+const Admin = require('../models/index.js').Admin
 module.exports = {
     get(req, res) {
         const id = req.params.id
-        Product.findAll()
-        .then((products) => res.status(201).send(products))
+        Admin.findAll()
+        .then((admins) => res.status(201).send(admins))
         .catch(error => res.status(400).send(error))
     },
     getById(req, res) {
         const id = req.params.id
-        Product.findOne({where:{id: id}})
-        .then((product) => res.status(201).send(product))
+        Admin.findAll({where:{id: id}})
+        .then((admin) => res.status(201).send(admin))
         .catch(error => res.status(400).send(error))
     },
     create(req, res) {
         console.log('we hit the route B', req.body)
-        return Product
+        return Admin
         .create
         ({
-            title: req.body.title
+            name: req.body.name,
+            username: req.body.username,
+            password: req.body.password
         })
-        .then(product => res.status(201).send(product))
+        .then(user => res.status(201).send(user))
         .catch(error => res.status(400).send(error))
     },
     update(req, res) {
         console.log('we hit the route B', req.body)
         const id = req.params.id
-        return Product
+        return Admin
         .findOne({where:{id: id}})
-        .then((product)=>{
-            if (!product){
+        .then((admin)=>{
+            if (!admin){
                 return res.status(404).send({
-                    message: 'Product not Found'
+                    message: 'Admin not Found'
                 })
             }
 
-            return product
+            return admin
             .update({
-                title: req.body.title || product.title,
-                ordered: req.body.ordered || product.ordered,
-                orderId: req.body.orderId || product.orderId,
+                name: req.body.name || admin.name,
+                username: req.body.username || admin.username,
+                password: req.body.password
             })
-            .then(product => res.status(201).send(product))
+            .then(admin => res.status(201).send(admin))
             .catch(error => res.status(400).send(error))
         })
         .catch(error => res.status(400).send(error))
@@ -48,18 +50,18 @@ module.exports = {
     delete(req, res) {
         console.log('we hit the route B', req.body)
         const id = req.params.id
-        return Product
+        return Admin
         .findOne({where:{id: id}})
-        .then((product)=>{
-            if (!product){
+        .then((admin)=>{
+            if (!admin){
                 return res.status(404).send({
-                    message: 'Product not Found'
+                    message: 'Admin not Found'
                 })
             }
 
-            return product
+            return admin
             .destroy()
-            .then(product => res.status(204).send(product))
+            .then(admin => res.status(204).send(admin))
             .catch(error => res.status(400).send(error))
         })
         .catch(error => res.status(400).send(error))

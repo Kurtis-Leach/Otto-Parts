@@ -4,10 +4,6 @@ module.exports = (app) => {
     app.get('/orders', orderController.get)
 
     app.get('/orders/:id', orderController.getById)
-
-    app.get('/orders/all/:userId', orderController.getAll)
-
-    app.get('/orders/check/:id', orderController.check)
     
     app.post('/orders', orderController.create)
 
