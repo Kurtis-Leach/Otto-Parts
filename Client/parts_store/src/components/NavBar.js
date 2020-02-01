@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { List, Segment, Input, Image, Dropdown, Button, Icon, Header} from 'semantic-ui-react'
 import '../assets/NavBar.css'
-import logo from '../assets/parts_pricing_icon.png'
+import logo from '../assets/HarvsGarageLogoTransparent.png'
 import history from '../history'
 import { connect } from 'react-redux'
 
@@ -60,7 +60,7 @@ class NavBar extends Component {
                         <List className='list'>
                             <List.Item className='listItem home'>
                                 <a className="active nav-a" href="/">
-                                    <Image src={logo} size='small' />
+                                    <Image src={logo} size='large' />
                                 </a>
                             </List.Item>
                             <List.Item className='listItemCart' size='large'>
@@ -68,11 +68,11 @@ class NavBar extends Component {
                                     <Icon onClick={() => { history.push('/cart') }} link inverted color='green' name='shopping cart' size='huge'></Icon>
                                 </Segment>
                             </List.Item>
-                            <List.Item className='searchListItem'>
+                            {/* <List.Item className='searchListItem'>
                                 <Segment basic className='searchDiv'>
                                     <Input onChange={(e) => { this.props.searchTermChange(e.target.value) }} value={this.props.searchTerm} className='inputSearch' placholder='Search...' action={<Button onClick={() => { history.push('/') }}><Icon name='search' /></Button>} actionPosition='left' />
                                 </Segment>
-                            </List.Item>
+                            </List.Item> */}
                             
                             <List.Item className='signupListItem'>
                                 {this.props.loggedIn ?
