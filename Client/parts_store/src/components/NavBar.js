@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { List, Segment, Input, Image, Dropdown, Button, Icon, Header} from 'semantic-ui-react'
+import { List, Segment, Input, Image, Dropdown, Button, Icon} from 'semantic-ui-react'
 import '../assets/NavBar.css'
-import logo from '../assets/parts_pricing_icon.png'
+import logo from '../assets/HarvsGarageLogoTransparent.png'
 import history from '../history'
 import { connect } from 'react-redux'
+import CartIcon from '../assets/BlueShoppingCart.png'
 
 const mapStateToProps = (state) => {
     return ({
@@ -60,13 +61,16 @@ class NavBar extends Component {
                         <List className='list'>
                             <List.Item className='listItem home'>
                                 <a className="active nav-a" href="/">
-                                    <Image src={logo} size='small' />
+                                    <Image src={logo} size='large' />
                                 </a>
                             </List.Item>
                             <List.Item className='listItemCart' size='large'>
-                                <Segment basic>
+                                {/* <Segment basic>
                                     <Icon onClick={() => { history.push('/cart') }} link inverted color='green' name='shopping cart' size='huge'></Icon>
-                                </Segment>
+                                </Segment> */}
+                                <a  href="/cart">
+                                    <Image src={CartIcon} size='tiny' />
+                                </a>
                             </List.Item>
                             <List.Item className='searchListItem'>
                                 <Segment basic className='searchDiv'>

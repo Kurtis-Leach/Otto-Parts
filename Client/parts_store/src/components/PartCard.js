@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Segment, Image, Header, Button, Icon } from 'semantic-ui-react'
+import { Segment, Image, Header, Button, Icon} from 'semantic-ui-react'
 import history from '../history'
+import PlaceholderImg from '../assets/PartPlaceholderImg.png'
 
 export default class PartCard extends Component {
   style={
@@ -35,7 +36,11 @@ export default class PartCard extends Component {
 
   // onClick={()=>{history.push(`/parts/${this.props.part.id}`)}}
   render() {
-    let { id, type, color, make, model, year} = this.props.part
+    let { id, type, color, make, model, year, img} = this.props.part
+    console.log(img === null)
+    if (img === null){
+      img=PlaceholderImg
+    }
     if (color === 'None'){
       color = ''
     }
@@ -44,7 +49,7 @@ export default class PartCard extends Component {
         <Segment basic compact onClick={()=>{history.push(`/parts/${id}`)}}>
           <Header as='h3'> {year + ' ' + make + ' ' + model} </Header>
           <Header as='h4'> {color + ' ' + type} </Header>
-          <Image src='https://imgplaceholder.com/420x320/ff7f7f/333333/fa-image' size='small' />
+          <Image src={img} alt={PlaceholderImg} size='small' />
         </Segment>
         <Button onClick={()=>{this.addToCart()}}fluid size='tiny' animated='vertical'>
             <Button.Content hidden>

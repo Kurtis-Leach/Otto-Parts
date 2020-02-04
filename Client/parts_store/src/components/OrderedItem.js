@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Segment, Header, Image } from 'semantic-ui-react'
+import { Segment, Header, Image, } from 'semantic-ui-react'
+import PlaceholderImg from '../assets/PartPlaceholderImg.png'
 
 export default class OrderedItem extends Component {
 
@@ -23,11 +24,17 @@ export default class OrderedItem extends Component {
 
   render() {
       console.log (this.props.part)
-      let { type, color, make, model, year, price} = this.props.part
+      let { type, color, make, model, year, price, img} = this.props.part
+      if (img === null){
+        img=PlaceholderImg
+      }
+      if (color === 'None'){
+        color = ''
+      }
     return (
-      <Segment basic style={this.style} >
+      <Segment basic style={this.style} > 
           <Segment basic style={this.imgStyle}>
-            <Image src='https://imgplaceholder.com/420x320/ff7f7f/333333/fa-image' size='large' />
+            <Image src={img} alt='' size='large' />
           </Segment>
           <Segment basic style={this.infoStyle}>
             <Header as='h3'> {year + ' ' + make + ' ' + model} </Header>
