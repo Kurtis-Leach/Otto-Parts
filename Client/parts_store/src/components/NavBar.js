@@ -55,13 +55,32 @@ class NavBar extends Component {
         let admin = this.props.admin
         return (
             <div>
-                <Segment basic style={{ height: 200}}/>
-                <div style={{ position: 'fixed', width: '100%', top: 0, zIndex: 100000 }}>
-                    <Segment basic className='mainDiv' >
-                        <List className='list'>
-                            <List.Item className='listItem home'>
-                                <a className="active nav-a" href="/">
-                                    <Image src={logo} size='large' />
+                <Segment 
+                    id='BANANA'
+                    basic 
+                    style={{ height: 500}}
+                />
+                <div 
+                    style={{ position: 'fixed', width: '100%', top: 0, zIndex: 100000 }}
+                > {/* Not completely sure what yet but it affects the part details page */} 
+                    <Segment 
+                        basic 
+                        className='mainDiv' 
+                        >{/*This is the Main Div/Segment around the whole navbar  */}                                       
+                        <List 
+                            className='list'
+                        >{/* This is the holder for all the items on the NavBar and decides the background */}
+                            <List.Item 
+                                className='listItem home'
+                            >
+                                <a 
+                                    className="active nav-a" 
+                                    href="/"
+                                >
+                                    <Image 
+                                    src={logo} 
+                                    size='large' 
+                                    />
                                 </a>
                             </List.Item>
                             <List.Item className='listItemCart' size='large'>

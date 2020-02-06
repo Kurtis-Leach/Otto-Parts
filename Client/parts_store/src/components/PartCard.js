@@ -37,7 +37,6 @@ export default class PartCard extends Component {
   // onClick={()=>{history.push(`/parts/${this.props.part.id}`)}}
   render() {
     let { id, type, color, make, model, year, img} = this.props.part
-    console.log(img === null)
     if (img === null){
       img=PlaceholderImg
     }
