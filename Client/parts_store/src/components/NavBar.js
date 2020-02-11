@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { List, Segment, Input, Image, Dropdown, Button, Icon} from 'semantic-ui-react'
 import '../assets/NavBar.css'
-import logo from '../assets/HarvsGarageLogoTransparent.png'
+import logo from '../assets/UpdatedLogo.png'
 import history from '../history'
 import { connect } from 'react-redux'
 import CartIcon from '../assets/BlueShoppingCart.png'
@@ -71,29 +71,47 @@ class NavBar extends Component {
                             className='list'
                         >{/* This is the holder for all the items on the NavBar and decides the background */}
                             <List.Item 
-                                className='listItem home'
+                                className='logo'
                             >
                                 <a 
                                     className="active nav-a" 
                                     href="/"
                                 >
-                                    <Image 
+                                    <Image
+                                    className='logo' 
                                     src={logo} 
                                     size='large' 
                                     />
                                 </a>
-                            </List.Item>
-                            <List.Item className='listItemCart' size='large'>
+                            </List.Item>{/* Logo List Item: This is the logo */}
+                            <List.Item 
+                                className='listItemCart' 
+                                size='large'
+                            >
                                 {/* <Segment basic>
                                     <Icon onClick={() => { history.push('/cart') }} link inverted color='green' name='shopping cart' size='huge'></Icon>
                                 </Segment> */}
                                 <a  href="/cart">
                                     <Image src={CartIcon} size='tiny' />
                                 </a>
-                            </List.Item>
-                            <List.Item className='searchListItem'>
-                                <Segment basic className='searchDiv'>
-                                    <Input onChange={(e) => { this.props.searchTermChange(e.target.value) }} value={this.props.searchTerm} className='inputSearch' placholder='Search...' action={<Button onClick={() => { history.push('/') }}><Icon name='search' /></Button>} actionPosition='left' />
+                            </List.Item>{/* Cart Icon List Item */}
+                            <List.Item 
+                                className='searchListItem'
+                            >
+                                <Segment 
+                                    basic 
+                                    className='searchDiv'
+                                >
+                                    <Input 
+                                        onChange={(e) => { this.props.searchTermChange(e.target.value) }} 
+                                        value={this.props.searchTerm} 
+                                        className='inputSearch' 
+                                        placholder='Search...' 
+                                        action={
+                                            <Button onClick={() => { history.push('/') }}>
+                                                <Icon name='search' /></Button>
+                                            } 
+                                        actionPosition='left' />
                                 </Segment>
                             </List.Item>
                             

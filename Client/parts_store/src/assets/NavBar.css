@@ -1,6 +1,6 @@
-body {
+/* body {
 font-size: 28px;
-}
+} */
 
 .mainDiv {
     outline-style: solid;
@@ -8,10 +8,8 @@ font-size: 28px;
 }
 
 .list {
-/* list-style-type: none; */
-/* margin: 0; */
 background-image: url('./diamond-plate.jpg');
-/* top: 0; */
+text-align: center;
 }
 
 .listItem {
@@ -31,15 +29,14 @@ padding: 14px 16px;
 text-decoration: none;
 }
 
-.nav-a:hover {
+/* .nav-a:hover {
 background-color: #111;
 }
 
 .active:hover {
 background-color: #111;
-}
+} */
 .active {
-/* background-color: grey; */
 display: block;
 color: white;
 text-align: center;
@@ -48,7 +45,8 @@ text-decoration: none;
 }
 
 .logo {
-    width: 70px;
+    margin: 0 auto;
+    display: none;
 }
 
 .searchListItem {
@@ -62,10 +60,10 @@ text-decoration: none;
     padding: 20px;
 }
 
-.inputSearch {
+/* .inputSearch {
     width: 100%;
     padding: 50px;
-}
+} */
 
 .ui.segment {
     padding: 0px;
