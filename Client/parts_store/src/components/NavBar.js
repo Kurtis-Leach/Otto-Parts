@@ -61,29 +61,17 @@ class NavBar extends Component {
                     style={{ height: 500}}
                 />
                 <div 
-                    style={{ position: 'fixed', width: '100%', top: 0, zIndex: 100000 }}
+                    className='mainDiv'
+                    style={{  }}
                 > {/* Not completely sure what yet but it affects the part details page */} 
                     <Segment 
                         basic 
-                        className='mainDiv' 
+                        className='mainDivOnList' 
                         >{/*This is the Main Div/Segment around the whole navbar  */}                                       
                         <List 
                             className='list'
                         >{/* This is the holder for all the items on the NavBar and decides the background */}
-                            <List.Item 
-                                className='logo'
-                            >
-                                <a 
-                                    className="active nav-a" 
-                                    href="/"
-                                >
-                                    <Image
-                                    className='logo' 
-                                    src={logo} 
-                                    size='large' 
-                                    />
-                                </a>
-                            </List.Item>{/* Logo List Item: This is the logo */}
+                            
                             <List.Item 
                                 className='listItemCart' 
                                 size='large'
@@ -96,25 +84,19 @@ class NavBar extends Component {
                                 </a>
                             </List.Item>{/* Cart Icon List Item */}
                             <List.Item 
-                                className='searchListItem'
+                                className='logo'
                             >
-                                <Segment 
-                                    basic 
-                                    className='searchDiv'
+                                <a 
+                                    className="active nav-a" 
+                                    href="/"
                                 >
-                                    <Input 
-                                        onChange={(e) => { this.props.searchTermChange(e.target.value) }} 
-                                        value={this.props.searchTerm} 
-                                        className='inputSearch' 
-                                        placholder='Search...' 
-                                        action={
-                                            <Button onClick={() => { history.push('/') }}>
-                                                <Icon name='search' /></Button>
-                                            } 
-                                        actionPosition='left' />
-                                </Segment>
-                            </List.Item>
-                            
+                                    <Image
+                                    className='logo' 
+                                    src={logo} 
+                                    size='big' 
+                                    />
+                                </a>
+                            </List.Item>{/* Logo List Item: This is the logo */}
                             <List.Item className='signupListItem'>
                                 {this.props.loggedIn ?
                                         <Segment basic className='signupSegment'>
@@ -148,6 +130,27 @@ class NavBar extends Component {
                                         </Dropdown>
                                     </Segment>}
                             </List.Item>
+                            <List.Item 
+                                className='searchListItem'
+                            >
+                                <Segment 
+                                    basic 
+                                    className='searchDiv'
+                                >
+                                    <Input 
+                                        onChange={(e) => { this.props.searchTermChange(e.target.value) }} 
+                                        value={this.props.searchTerm} 
+                                        className='inputSearch' 
+                                        placholder='Search...' 
+                                        action={
+                                            <Button onClick={() => { history.push('/') }}>
+                                                <Icon name='search' /></Button>
+                                            } 
+                                        actionPosition='left' />
+                                </Segment>
+                            </List.Item>
+                            
+                            
                         </List>
                     </Segment>
                 </div>
