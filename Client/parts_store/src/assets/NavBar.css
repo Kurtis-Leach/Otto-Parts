@@ -33,6 +33,10 @@ float: left;
     left: 95%;
 }
 
+.listItemFacebook {
+    position: absolute;
+}
+
 .nav-a {
 display: block;
 color: white;
@@ -87,7 +91,7 @@ text-decoration: none;
 } */
 
 .signupListItem {
-    /* margin-right: 100px; */
+    margin-right: 100px;
     float: right;
     
 }

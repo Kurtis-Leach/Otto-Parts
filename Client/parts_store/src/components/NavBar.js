@@ -73,8 +73,7 @@ class NavBar extends Component {
                         >{/* This is the holder for all the items on the NavBar and decides the background */}
                             
                             <List.Item 
-                                className='listItemCart' 
-                                size='large'
+                                className='listItemCart'
                             >
                                 {/* <Segment basic>
                                     <Icon onClick={() => { history.push('/cart') }} link inverted color='green' name='shopping cart' size='huge'></Icon>
@@ -83,6 +82,11 @@ class NavBar extends Component {
                                     <Image src={CartIcon} size='tiny' />
                                 </a>
                             </List.Item>{/* Cart Icon List Item */}
+                            <List.Item 
+                                className='listItemFacebook'
+                            >
+                                <Icon name='facebook official' size='massive'></Icon>
+                            </List.Item>{/* Cart Icon Facebook */}
                             <List.Item 
                                 className='logo'
                             >
